@@ -27,7 +27,6 @@
             android:textStyle="bold"
             android:textSize="18sp"/>
 
-
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,49 +56,43 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/libCategories"
+        android:id="@+id/profileInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="10dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/libCat_likedTracks"
-            android:onClick="likedTracksClicked"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingVertical="10dp">
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:gravity="center_horizontal">
 
             <TextView
-                android:id="@+id/libCat1"
+                android:id="@+id/userTag_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@amia"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.666"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:gravity="center_vertical" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:gravity="center_horizontal">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/libCat_followers"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="followersClicked"
-                android:paddingVertical="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="vertical"
+                android:layout_marginEnd="50dp"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:id="@+id/followingCount"
@@ -107,24 +100,22 @@
                     android:layout_height="wrap_content"
                     android:text="39"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/followingText"
-                    app:layout_constraintStart_toStartOf="@+id/followingText"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/followingText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Following"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/followingCount"
-                    app:layout_constraintVertical_bias="0.5" />
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:id="@+id/followersCount"
@@ -132,66 +123,121 @@
                     android:layout_height="wrap_content"
                     android:text="225"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/followersText"
-                    app:layout_constraintStart_toStartOf="@+id/followersText"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/followersText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Followers"
-                    android:textColor="@color/white"
-                    tools:layout_editor_absoluteX="258dp"
-                    tools:layout_editor_absoluteY="24dp" />
+                    android:textColor="@color/white" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
+        </LinearLayout>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-</LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp">
-
-        <TextView
-            android:id="@+id/header_listeningHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Uploads"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
-
-        <TextView
-            android:id="@+id/lib_btnSeeAll"
-            android:onClick="seeAllClicked"
-            android:layout_width="48dp"
+        <LinearLayout
+            android:id="@+id/libCat_likedTracks"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:gravity="center_vertical|end"
-            android:text="See all"
-            android:textColor="@color/lightgray"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/header_listeningHistory"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/header_listeningHistory" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:paddingVertical="10dp"
+            android:gravity="center_horizontal">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/bake_no_hana" />
+            <TextView
+                android:id="@+id/libCat1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anything's welcome as long as its cute!"
+                android:textColor="@color/white"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/header_listeningHistory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Uploads"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/lib_btnSeeAll"
+                android:onClick="seeAllClicked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See all"
+                android:textColor="@color/lightgray"
+                android:textSize="12sp"
+                android:gravity="center_vertical|end" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    style="@style/uploadStyle"
+                    app:srcCompat="@drawable/bake_no_hana" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    style="@style/uploadStyle"
+                    app:srcCompat="@drawable/kitty" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    style="@style/uploadStyle"
+                    app:srcCompat="@drawable/kimi_no_yoru_wo_kure" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    style="@style/uploadStyle"
+                    app:srcCompat="@drawable/lower" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    style="@style/uploadStyle"
+                    app:srcCompat="@drawable/idsmile" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
 
 </LinearLayout>
