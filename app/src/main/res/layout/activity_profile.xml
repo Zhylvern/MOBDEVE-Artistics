@@ -231,6 +231,11 @@
                     style="@style/uploadStyle"
                     app:srcCompat="@drawable/idsmile" />
 
+                <ImageView
+                    android:id="@+id/imageView6"
+                    style="@style/uploadStyle"
+                    app:srcCompat="@drawable/kuyamu_to_kaite_mirai" />
+
             </LinearLayout>
 
         </LinearLayout>
