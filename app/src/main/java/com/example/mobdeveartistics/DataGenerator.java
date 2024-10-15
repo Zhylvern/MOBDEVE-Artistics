@@ -3,8 +3,8 @@ package com.example.mobdeveartistics;
 import java.util.ArrayList;
 
 public class DataGenerator {
-    public static ArrayList<Object> generateData() {
-        ArrayList<Object> tempList = new ArrayList<>();
+    public static ArrayList<Data> generateData() {
+        ArrayList<Data> tempList = new ArrayList<>();
         tempList.add(new Data(R.drawable.media_background_1, R.drawable.profile, 10, 50, "John Doe", "This is a sample caption"));
         tempList.add(new Data(R.drawable.media_background_1, R.drawable.profile, 20, 100, "Jane Doe", "This is another sample caption"));
         tempList.add(new Data(R.drawable.media_background_1, R.drawable.profile, 30, 150, "Bob Smith", "This is yet another sample caption"));

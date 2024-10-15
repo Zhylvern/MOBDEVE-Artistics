@@ -7,26 +7,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-    private List<Data> dataList;
+    private ArrayList<Data> dataList;
 
-    public MyAdapter(List<Data> dataList) {
+    public MyAdapter(ArrayList<Data> dataList) {
         this.dataList = dataList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
-        // Change activity_main to data_item
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.data_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Data data = dataList.get(position);
+        Data data = (Data) dataList.get(position);
 
         holder.setmMediaBackground(data.getMediaBackgroundResource());
         holder.setmProfileImage(data.getProfileImageResource());

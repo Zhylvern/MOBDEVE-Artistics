@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/mediaBackground"
+        android:layout_width="match_parent"
+        android:layout_height="655dp"
+        android:clickable="true"
+        android:contentDescription="Media Background"
+        android:focusable="true"
+        android:onClick="onMediaBackgroundClick"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/mediaBackground"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-219dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/profile" />
+
+    <ImageView
+        android:id="@+id/likeButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="492dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/like" />
+
+    <ImageView
+        android:id="@+id/commentButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/likeButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/comment" />
+
+    <TextView
+        android:id="@+id/commentCount"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/commentButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="6"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/likeCount"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/likeButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="116"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/originalPoster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mediaBackground"
+        android:layout_marginTop="12dp"
+        android:text="Hiraya"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/userInfoLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/originalPoster"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/originalPoster"
+        android:layout_marginTop="4dp"
+        android:text="this is my song"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+</RelativeLayout>
