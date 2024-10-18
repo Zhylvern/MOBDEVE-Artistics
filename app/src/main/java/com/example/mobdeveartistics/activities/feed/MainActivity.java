@@ -29,15 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Log.d("MainActivity", "LayoutManager set on RecyclerView");
 
         ArrayList<Data> dataList = DataGenerator.generateData();
-        Log.d("MainActivity", "DataList size: " + dataList.size());
         adapter = new FeedAdapter(dataList);
         recyclerView.setAdapter(adapter);
-        Log.d("MainActivity", "Adapter set on RecyclerView");
         adapter.notifyDataSetChanged();
-        Log.d("MainActivity", "Data added to RecyclerView");
     }
 
     public void onClickProfile(View v) {
