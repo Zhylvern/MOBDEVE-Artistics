@@ -1,12 +1,15 @@
-package com.example.mobdeveartistics.activities;
+package com.example.mobdeveartistics.activities.feed;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import com.example.mobdeveartistics.activities.profile.ProfileActivity;
 import com.example.mobdeveartistics.models.Data;
 import com.example.mobdeveartistics.models.DataGenerator;
 import com.example.mobdeveartistics.R;
@@ -35,5 +38,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "Adapter set on RecyclerView");
         adapter.notifyDataSetChanged();
         Log.d("MainActivity", "Data added to RecyclerView");
+    }
+
+    public void onClickProfile(View v) {
+        Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(i);
     }
 }
