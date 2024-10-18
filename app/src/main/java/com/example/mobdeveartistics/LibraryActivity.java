@@ -1,5 +1,6 @@
 package com.example.mobdeveartistics;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -43,37 +44,61 @@ public class LibraryActivity extends AppCompatActivity {
     }
 
     public void likedTracksClicked(View v) {
+
+        Intent i = new Intent(LibraryActivity.this, LikedTracksActivity.class);
+        startActivity(i);
+
         Toast toast = Toast.makeText(LibraryActivity.this, "Liked tracks clicked!", Toast.LENGTH_SHORT);
         toast.show();
     }
 
     public void playlistsClicked(View v) {
+
+        Intent i = new Intent(LibraryActivity.this, PlaylistsActivity.class);
+        startActivity(i);
+
         Toast toast = Toast.makeText(LibraryActivity.this, "Playlists clicked!", Toast.LENGTH_SHORT);
         toast.show();
     }
 
     public void followingClicked(View v) {
+
+        Intent i = new Intent(LibraryActivity.this, FollowingActivity.class);
+        startActivity(i);
+
         Toast toast = Toast.makeText(LibraryActivity.this, "Following clicked!", Toast.LENGTH_SHORT);
         toast.show();
     }
 
     public void followersClicked(View v) {
+
+        Intent i = new Intent(LibraryActivity.this, FollowersActivity.class);
+        startActivity(i);
+
         Toast toast = Toast.makeText(LibraryActivity.this, "Followers clicked!", Toast.LENGTH_SHORT);
         toast.show();
     }
 
     public void yourUploadsClicked(View v) {
+
         Toast toast = Toast.makeText(LibraryActivity.this, "Your uploads clicked!", Toast.LENGTH_SHORT);
         toast.show();
     }
 
     public void songClicked(View v) {
+
         Toast toast = Toast.makeText(LibraryActivity.this, "Song X clicked!", Toast.LENGTH_SHORT);
         toast.show();
     }
 
     public void seeAllClicked(View v) {
+
         Toast toast = Toast.makeText(LibraryActivity.this, "See all clicked!", Toast.LENGTH_SHORT);
         toast.show();
+
+    }
+
+    public void backToLibrary(View v) {
+        finish();
     }
 }
