@@ -1,4 +1,4 @@
-package com.example.mobdeveartistics;
+package com.example.mobdeveartistics.activities.profile;
 
 import android.net.Uri;
 
