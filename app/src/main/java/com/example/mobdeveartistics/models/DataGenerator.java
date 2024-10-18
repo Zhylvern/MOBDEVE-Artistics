@@ -1,4 +1,6 @@
-package com.example.mobdeveartistics;
+package com.example.mobdeveartistics.models;
+
+import com.example.mobdeveartistics.R;
 
 import java.util.ArrayList;
 

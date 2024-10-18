@@ -1,4 +1,4 @@
-package com.example.mobdeveartistics;
+package com.example.mobdeveartistics.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,17 +7,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.mobdeveartistics.models.Data;
+import com.example.mobdeveartistics.models.DataGenerator;
+import com.example.mobdeveartistics.R;
+import com.example.mobdeveartistics.adapters.FeedAdapter;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private MyAdapter adapter;
+    private FeedAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.feed_activity_main);
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -25,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Data> dataList = DataGenerator.generateData();
         Log.d("MainActivity", "DataList size: " + dataList.size());
-        adapter = new MyAdapter(dataList);
+        adapter = new FeedAdapter(dataList);
         recyclerView.setAdapter(adapter);
         Log.d("MainActivity", "Adapter set on RecyclerView");
         adapter.notifyDataSetChanged();

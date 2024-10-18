@@ -1,4 +1,4 @@
-package com.example.mobdeveartistics;
+package com.example.mobdeveartistics.models;
 
 public class Data {
     private int mediaBackground;

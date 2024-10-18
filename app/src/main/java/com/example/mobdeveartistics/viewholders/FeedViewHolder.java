@@ -1,4 +1,4 @@
-package com.example.mobdeveartistics;
+package com.example.mobdeveartistics.viewholders;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -7,7 +7,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+import com.example.mobdeveartistics.R;
+
+public class FeedViewHolder extends RecyclerView.ViewHolder {
     private ImageView mMediaBackground;
     private ImageView mProfileImage;
     private TextView mCommentCount;
@@ -15,7 +17,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     private TextView mOriginalPoster;
     private TextView mCaption;
 
-    public MyViewHolder(@NonNull View itemView) {
+    public FeedViewHolder(@NonNull View itemView) {
         super(itemView);
         this.mMediaBackground = itemView.findViewById(R.id.mediaBackground);
         this.mProfileImage = itemView.findViewById(R.id.profileImage);
