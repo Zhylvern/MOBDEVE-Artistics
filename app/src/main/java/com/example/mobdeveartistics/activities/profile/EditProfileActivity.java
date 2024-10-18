@@ -19,7 +19,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.profile_activity_edit);
 
         Intent intent = getIntent();
         profile = (Profile) intent.getSerializableExtra("profile");
