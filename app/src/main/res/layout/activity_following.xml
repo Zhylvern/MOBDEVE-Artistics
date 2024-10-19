@@ -8,7 +8,7 @@
     android:background="@color/black"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".FollowingActivity">
+    tools:context=".activities.library.FollowingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

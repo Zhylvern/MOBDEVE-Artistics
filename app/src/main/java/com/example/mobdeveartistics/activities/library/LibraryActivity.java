@@ -1,4 +1,4 @@
-package com.example.mobdeveartistics;
+package com.example.mobdeveartistics.activities.library;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.mobdeveartistics.R;
 
 public class LibraryActivity extends AppCompatActivity {
 

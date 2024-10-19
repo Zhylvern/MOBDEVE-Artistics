@@ -8,7 +8,7 @@
     android:background="@color/black"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".LikedTracksActivity">
+    tools:context=".activities.library.LikedTracksActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
