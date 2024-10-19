@@ -1,6 +1,7 @@
 package com.example.mobdeveartistics.activities.profile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             // Get the updated profile information
             Profile updatedProfile = (Profile) data.getSerializableExtra("updatedProfile");
 
@@ -55,9 +56,10 @@ public class ProfileActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.profile_bio)).setText(updatedProfile.getBio());
 
             // Display the profile picture
-            if (updatedProfile.getProfilePictureUri() != null) {
+            String profilePictureUriString = updatedProfile.getProfilePictureUriString();
+            if (profilePictureUriString != null && !profilePictureUriString.isEmpty()) {
                 ImageView profileImg = findViewById(R.id.profile_img);
-                profileImg.setImageURI(updatedProfile.getProfilePictureUri());
+                profileImg.setImageURI(Uri.parse(profilePictureUriString));
             }
         }
     }

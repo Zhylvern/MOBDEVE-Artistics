@@ -85,6 +85,9 @@ public class LibraryActivity extends AppCompatActivity {
 
     public void yourUploadsClicked(View v) {
 
+        Intent i = new Intent(LibraryActivity.this, UploadActivity.class);
+        startActivity(i);
+
         Toast toast = Toast.makeText(LibraryActivity.this, "Your uploads clicked!", Toast.LENGTH_SHORT);
         toast.show();
     }

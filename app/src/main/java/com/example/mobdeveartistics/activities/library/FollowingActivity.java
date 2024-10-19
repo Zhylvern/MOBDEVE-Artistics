@@ -1,6 +1,8 @@
 package com.example.mobdeveartistics.activities.library;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mobdeveartistics.R;
+import com.example.mobdeveartistics.activities.feed.MainActivity;
 
 public class FollowingActivity extends AppCompatActivity {
 
@@ -22,5 +25,9 @@ public class FollowingActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void backToLibrary(View v) {
+        finish();
     }
 }

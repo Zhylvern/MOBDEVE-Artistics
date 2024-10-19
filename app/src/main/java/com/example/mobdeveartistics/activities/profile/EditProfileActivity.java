@@ -64,7 +64,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
             // If an image has been selected, add it to the profile
             if (selectedImageUri != null) {
-                updatedProfile.setProfilePictureUri(selectedImageUri);
+                // Convert Uri to String for serialization
+                updatedProfile.setProfilePictureUriString(selectedImageUri.toString());
             }
 
             // Pass the updated profile information back to the MainActivity
