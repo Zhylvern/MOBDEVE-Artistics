@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.mobdeveartistics.activities.library.LibraryActivity;
 import com.example.mobdeveartistics.activities.profile.ProfileActivity;
 import com.example.mobdeveartistics.models.Data;
 import com.example.mobdeveartistics.models.DataGenerator;
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickProfile(View v) {
         Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(i);
+    }
+
+    public void goToLibrary (View v) {
+        Intent i = new Intent(MainActivity.this, LibraryActivity.class);
         startActivity(i);
     }
 }
