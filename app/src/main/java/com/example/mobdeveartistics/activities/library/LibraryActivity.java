@@ -14,6 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mobdeveartistics.R;
+import com.example.mobdeveartistics.activities.feed.MainActivity;
+import com.example.mobdeveartistics.activities.profile.ProfileActivity;
 
 public class LibraryActivity extends AppCompatActivity {
 
@@ -103,4 +105,23 @@ public class LibraryActivity extends AppCompatActivity {
     public void backToLibrary(View v) {
         finish();
     }
+
+    //Navbar Buttons
+
+    public void nav_home_button(View v) {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
+
+    public void nav_library_button (View v) {
+        Intent i = new Intent(getApplicationContext(), LibraryActivity.class);
+        startActivity(i);
+    }
+
+    public void nav_profile_button(View v) {
+        Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(i);
+    }
 }
+

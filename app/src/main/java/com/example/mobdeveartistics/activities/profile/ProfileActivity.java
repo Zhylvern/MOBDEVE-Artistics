@@ -13,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mobdeveartistics.R;
+import com.example.mobdeveartistics.activities.feed.MainActivity;
+import com.example.mobdeveartistics.activities.library.LibraryActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -59,4 +61,28 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void backToFeed(View v) {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
+    //Navbar Buttons
+
+    public void nav_home_button(View v) {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
+
+    public void nav_library_button (View v) {
+        Intent i = new Intent(getApplicationContext(), LibraryActivity.class);
+        startActivity(i);
+    }
+
+    public void nav_profile_button(View v) {
+        Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(i);
+    }
 }
+

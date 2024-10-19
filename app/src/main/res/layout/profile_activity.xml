@@ -27,6 +27,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:onClick="backToFeed"
                 android:src="@drawable/arrow_right" />
 
         </LinearLayout>
@@ -264,6 +265,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <include layout="@layout/navbar_layout" />
 
 
 
