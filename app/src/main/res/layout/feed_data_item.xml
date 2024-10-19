@@ -74,42 +74,153 @@
         android:textColor="@android:color/white"
         android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/originalPoster"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/mediaBackground"
-        android:layout_marginTop="12dp"
-        android:text="Hiraya"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="-70dp"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/userInfoLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/originalPoster"
-        android:layout_marginTop="4dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/originalPoster"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:text="Hiraya"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="this is my song"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/caption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/originalPoster"
-        android:layout_marginTop="4dp"
-        android:text="this is my song"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+<!--    <LinearLayout-->
+<!--        android:id="@+id/userInfoLayout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/originalPoster"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:orientation="vertical">-->
+
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+    <include layout="@layout/navbar_layout" />
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="5dp"-->
+<!--        android:background="@drawable/black_with_white_outline"-->
+<!--        android:layout_alignParentBottom="true">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/home_icon" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Home"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginStart="20dp">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/add_icon" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Add"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginStart="20dp">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/library_icon" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Library"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginStart="20dp">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/profile_navbar" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Profile"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:gravity="center" />-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+
 
 </RelativeLayout>

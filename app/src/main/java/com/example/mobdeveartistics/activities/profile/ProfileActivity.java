@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mobdeveartistics.R;
+import com.example.mobdeveartistics.activities.feed.MainActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -58,5 +59,17 @@ public class ProfileActivity extends AppCompatActivity {
                 profileImg.setImageURI(updatedProfile.getProfilePictureUri());
             }
         }
+    }
+
+    //Navbar Buttons
+
+    public void nav_home_button(View v) {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
+    public void nav_profile_button(View v) {
+        Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(i);
     }
 }

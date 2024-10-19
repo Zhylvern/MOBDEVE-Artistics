@@ -40,4 +40,18 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(i);
     }
+
+    //Navbar Buttons
+
+    public void nav_home_button(View v) {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
+    public void nav_profile_button(View v) {
+        Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(i);
+    }
+
+
 }

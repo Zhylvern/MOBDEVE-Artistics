@@ -265,6 +265,8 @@
 
     </LinearLayout>
 
+    <include layout="@layout/navbar_layout" />
+
 
 
 
