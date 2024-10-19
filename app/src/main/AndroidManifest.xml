@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MOBDEVEArtistics"
         tools:targetApi="31">
         <activity
+            android:name=".activities.library.UploadActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.feed.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,17 +24,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activities.profile.ProfileActivity" android:exported="true" />
-        <activity android:name=".activities.profile.EditProfileActivity" android:exported="false" />
-        <activity android:name=".activities.library.FollowersActivity" android:exported="false" />
-        <activity android:name=".activities.library.FollowingActivity" android:exported="false" />
-        <activity android:name=".activities.library.LibraryActivity" android:exported="true" />
-        <activity android:name=".activities.library.LikedTracksActivity" android:exported="false" />
-        <activity android:name=".activities.library.PlaylistsActivity" android:exported="false" />
-
-
-
+        <activity
+            android:name=".activities.profile.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.profile.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.library.FollowersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.library.FollowingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.library.LibraryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.library.LikedTracksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.library.PlaylistsActivity"
+            android:exported="false" />
     </application>
-</manifest>
 
+</manifest>
