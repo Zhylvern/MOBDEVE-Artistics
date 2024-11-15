@@ -5,26 +5,37 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveartistics.R
+import com.example.mobdeveartistics.adapters.UserRowAdapter
+import com.example.mobdeveartistics.models.UserRow
+import com.example.mobdeveartistics.models.UserRowGenerator
 
 class FollowersActivity : AppCompatActivity() {
 
+    private val userRowList: ArrayList<UserRow> = UserRowGenerator.generateFollowersData()
+    private lateinit var rvFollowers: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_followers) // Ensure this layout exists
+        setContentView(R.layout.library_followers)
 
         // Setting up the main view to handle window insets
-        val mainView = findViewById<View>(R.id.main) // Ensure this ID matches your layout
-
-        ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById(R.id.main)
+        ) { v: View, insets: WindowInsetsCompat ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Adjust the padding of the view based on the system bars
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets // Return the insets
+            insets
         }
+
+        rvFollowers = findViewById(R.id.rvFollowers)
+        rvFollowers.adapter = UserRowAdapter(userRowList)
+        rvFollowers.layoutManager = LinearLayoutManager(this)
     }
 
-    fun backToLibrary(v: View?) {
-        finish() // Close the activity
+    fun backToLibrary(v: View) {
+        finish()
     }
 }

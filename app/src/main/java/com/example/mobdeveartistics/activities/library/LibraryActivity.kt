@@ -5,14 +5,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveartistics.R
 import com.example.mobdeveartistics.activities.feed.MainActivity
 import com.example.mobdeveartistics.activities.profile.ProfileActivity
+import com.example.mobdeveartistics.adapters.SongRowAdapter
+import com.example.mobdeveartistics.models.SongRow
+import com.example.mobdeveartistics.models.SongRowGenerator
 
 class LibraryActivity : AppCompatActivity() {
     private var likedTracks: ConstraintLayout? = null
@@ -20,16 +24,16 @@ class LibraryActivity : AppCompatActivity() {
     private var following: ConstraintLayout? = null
     private var followers: ConstraintLayout? = null
     private var yourUploads: ConstraintLayout? = null
-    private var song1: ConstraintLayout? = null
-    private var song2: ConstraintLayout? = null
-    private var song3: ConstraintLayout? = null
     private var btnSeeAll: TextView? = null
 
+    private val songHistoryList: ArrayList<SongRow> = SongRowGenerator.generateListHistData()
+    private lateinit var rvListHist: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.enableEdgeToEdge()
-        setContentView(R.layout.activity_library)
+        setContentView(R.layout.library_activity)
+
+        // Setting up the main view to handle window insets
         ViewCompat.setOnApplyWindowInsetsListener(
             findViewById(R.id.main)
         ) { v: View, insets: WindowInsetsCompat ->
@@ -38,16 +42,16 @@ class LibraryActivity : AppCompatActivity() {
             insets
         }
 
-        // Initialize views
         likedTracks = findViewById(R.id.libCat_likedTracks)
         playlists = findViewById(R.id.libCat_playlists)
         following = findViewById(R.id.libCat_following)
         followers = findViewById(R.id.libCat_followers)
         yourUploads = findViewById(R.id.libCat_yourUploads)
-        song1 = findViewById(R.id.hist_song1)
-        song2 = findViewById(R.id.hist_song2)
-        song3 = findViewById(R.id.hist_song3)
-        btnSeeAll = findViewById(R.id.lib_btnSeeAll)
+        btnSeeAll = findViewById(R.id.btnSeeAllListHist)
+
+        rvListHist = findViewById(R.id.rvListHist)
+        rvListHist.adapter = SongRowAdapter(songHistoryList)
+        rvListHist.layoutManager = LinearLayoutManager(this)
     }
 
     fun likedTracksClicked(v: View?) {
@@ -56,10 +60,6 @@ class LibraryActivity : AppCompatActivity() {
             LikedTracksActivity::class.java
         )
         startActivity(i)
-
-        val toast =
-            Toast.makeText(this@LibraryActivity, "Liked tracks clicked!", Toast.LENGTH_SHORT)
-        toast.show()
     }
 
     fun playlistsClicked(v: View?) {
@@ -68,9 +68,6 @@ class LibraryActivity : AppCompatActivity() {
             PlaylistsActivity::class.java
         )
         startActivity(i)
-
-        val toast = Toast.makeText(this@LibraryActivity, "Playlists clicked!", Toast.LENGTH_SHORT)
-        toast.show()
     }
 
     fun followingClicked(v: View?) {
@@ -79,9 +76,6 @@ class LibraryActivity : AppCompatActivity() {
             FollowingActivity::class.java
         )
         startActivity(i)
-
-        val toast = Toast.makeText(this@LibraryActivity, "Following clicked!", Toast.LENGTH_SHORT)
-        toast.show()
     }
 
     fun followersClicked(v: View?) {
@@ -90,9 +84,6 @@ class LibraryActivity : AppCompatActivity() {
             FollowersActivity::class.java
         )
         startActivity(i)
-
-        val toast = Toast.makeText(this@LibraryActivity, "Followers clicked!", Toast.LENGTH_SHORT)
-        toast.show()
     }
 
     fun yourUploadsClicked(v: View?) {
@@ -101,23 +92,14 @@ class LibraryActivity : AppCompatActivity() {
             UploadActivity::class.java
         )
         startActivity(i)
-
-        val toast =
-            Toast.makeText(this@LibraryActivity, "Your uploads clicked!", Toast.LENGTH_SHORT)
-        toast.show()
-    }
-
-    fun songClicked(v: View?) {
-        val toast = Toast.makeText(this@LibraryActivity, "Song X clicked!", Toast.LENGTH_SHORT)
-        toast.show()
     }
 
     fun seeAllClicked(v: View?) {
-        val toast = Toast.makeText(this@LibraryActivity, "See all clicked!", Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(this@LibraryActivity, "TODO: See all Listening History", Toast.LENGTH_SHORT)
         toast.show()
     }
 
-    fun backToLibrary(v: View?) {
+    fun backToLibrary(v: View) {
         finish()
     }
 
