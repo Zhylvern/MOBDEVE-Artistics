@@ -14,7 +14,6 @@
         android:clickable="true"
         android:contentDescription="Media Background"
         android:focusable="true"
-        android:onClick="onMediaBackgroundClick"
         android:scaleType="centerCrop" />
 
     <ImageView
