@@ -15,9 +15,6 @@ import com.example.mobdeveartistics.models.DataGenerator
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.from
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import kotlinx.serialization.Serializable
 
 val supabase = createSupabaseClient(
     supabaseUrl = "https://svqrgqcyrqqqgaofpdpa.supabase.co",
@@ -44,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         adapter?.notifyDataSetChanged()
     }
 
-
     fun onClickProfile(v: View?) {
         val i = Intent(applicationContext, ProfileActivity::class.java)
         startActivity(i)
@@ -66,26 +62,3 @@ class MainActivity : AppCompatActivity() {
         startActivity(i)
     }
 }
-
-//@Serializable
-//data class Post (
-//    val id: String,
-//    val user_id: String,
-//    val caption: String,
-//    val like_count: Int,
-//    val comment_count: Int
-//)
-//
-//@Composable
-//fun PostsList() {
-//   val posts = remember { mutableStateListOf<Post>() }
-//    LaunchedEffect(Unit) {
-//        withContext(Dispatchers.IO) {
-//            val results = supabase. from("posts").select().decodeList<Post>()
-//            posts.addAll(results)
-//            results.forEach { post ->
-//                Log.d("PostsList", "Post: $post")
-//            }
-//        }
-//    }
-//}
