@@ -28,17 +28,14 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize views
-        btnLogin = findViewById(R.id.btnlogin);
+        btnLogin = findViewById(R.id.btnLogin);
         btnSignUp = findViewById(R.id.btnSignUp);
     }
     public void btnLoginClicked (View v) {
-        Toast toast = Toast.makeText(LoginActivity.this, "Login button clicked!", Toast.LENGTH_SHORT);
-        toast.show();
+        Toast.makeText(LoginActivity.this, "Login button clicked!", Toast.LENGTH_SHORT).show();
     }
 
     public void btnSignUpClicked (View v) {
-        Toast toast = Toast.makeText(LoginActivity.this, "Sign Up button clicked!", Toast.LENGTH_SHORT);
-        toast.show();
+        Toast.makeText(LoginActivity.this, "Sign Up button clicked!", Toast.LENGTH_SHORT).show();
     }
 }
