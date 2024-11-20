@@ -27,8 +27,9 @@ This will install all the necessary dependencies, including express, dotenv, sup
 
 In the project root directory, create a .env file with the following environment variables:
 
-SUPABASE_URL=<your-supabase-url>
-SUPABASE_KEY=<your-supabase-api-key>
+`SUPABASE_URL=<your-supabase-url>`
+
+`SUPABASE_KEY=<your-supabase-api-key>`
 
     SUPABASE_URL: This is the URL of your Supabase project (you can find this in the Supabase dashboard).
     SUPABASE_KEY: This is the key (anon key or service role key) used to authenticate requests to Supabase.
