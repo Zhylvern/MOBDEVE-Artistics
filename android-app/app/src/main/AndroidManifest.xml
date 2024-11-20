@@ -47,6 +47,9 @@
         <activity
             android:name=".activities.library.PlaylistsActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.login.LoginActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
