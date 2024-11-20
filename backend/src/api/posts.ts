@@ -21,52 +21,93 @@ router.get('/', async (req: any, res: any) => {
   }
   res.status(200).json(data);
 });
+
 // Handle file upload and post creation
-router.post('/', upload.single('image'), async (req: any, res: any) => {
+router.post('/', upload.fields([{ name: 'image' }, { name: 'song' }]), async (req: any, res: any) => {
   const { caption } = req.body;
-  const file = req.file;
+  const imageFile = req.files?.image ? req.files.image[0] : null;
+  const songFile = req.files?.song ? req.files.song[0] : null;
 
-  // Check if a file was uploaded
-  if (!file) {
-    return res.status(400).json({ error: 'No file uploaded' });
+  // Check if at least one file was uploaded (image or song)
+  if (!imageFile && !songFile) {
+    return res.status(400).json({ error: 'No files uploaded' });
   }
 
-  // Upload file to Supabase Storage
-  const { error: uploadError } = await supabase.storage
-    .from('post') // Replace with your bucket name
-    .upload(`img/${file.originalname}`, file.buffer, {
-      contentType: file.mimetype,
-      upsert: true, // Overwrite if file already exists
-    });
+  // Initialize URLs for image and song
+  let imageURL = null;
+  let songURL = null;
 
-  // Handle upload error
-  if (uploadError) {
-    console.error("Upload Error:", uploadError); // Log the error for debugging
-    return res.status(500).json({
-      error: "Upload failed",
-      message: uploadError.message,
-      code: "UPLOAD_ERROR" // Custom error code
-    });
+  // Upload image to Supabase Storage (if image was uploaded)
+  if (imageFile) {
+    const { error: uploadError } = await supabase.storage
+      .from('post') // Replace with your bucket name
+      .upload(`img/${imageFile.originalname}`, imageFile.buffer, {
+        contentType: imageFile.mimetype,
+        upsert: true, // Overwrite if file already exists
+      });
+
+    // Handle upload error for image
+    if (uploadError) {
+      console.error("Image Upload Error:", uploadError); // Log the error for debugging
+      return res.status(500).json({
+        error: "Image upload failed",
+        message: uploadError.message,
+        code: "IMAGE_UPLOAD_ERROR", // Custom error code
+      });
+    }
+
+    // Get the public URL of the uploaded image
+    const { data: publicImageURLData } = supabase.storage
+      .from('post') // Replace with your bucket name
+      .getPublicUrl(`img/${imageFile.originalname}`);
+
+    imageURL = publicImageURLData?.publicUrl;
+
+    if (!imageURL) {
+      return res.status(500).json({
+        error: "Failed to retrieve image public URL",
+        code: "IMAGE_URL_ERROR"
+      });
+    }
   }
 
-  // Get the public URL of the uploaded file
-  const { data: publicURLData } = supabase.storage
-    .from('post') // Replace with your bucket name
-    .getPublicUrl(`img/${file.originalname}`);
+  // Upload song to Supabase Storage (if song was uploaded)
+  if (songFile) {
+    const { error: uploadError } = await supabase.storage
+      .from('post') // Replace with your bucket name
+      .upload(`song/${songFile.originalname}`, songFile.buffer, {
+        contentType: songFile.mimetype,
+        upsert: true, // Overwrite if file already exists
+      });
 
-  // Extract the URL from the response object
-  const publicURL = publicURLData?.publicUrl;
+    // Handle upload error for song
+    if (uploadError) {
+      console.error("Song Upload Error:", uploadError); // Log the error for debugging
+      return res.status(500).json({
+        error: "Song upload failed",
+        message: uploadError.message,
+        code: "SONG_UPLOAD_ERROR", // Custom error code
+      });
+    }
 
-  if (!publicURL) {
-    return res.status(500).json({
-      error: "Failed to retrieve public URL",
-      code: "URL_ERROR"
-    });
+    // Get the public URL of the uploaded song
+    const { data: publicSongURLData } = supabase.storage
+      .from('post') // Replace with your bucket name
+      .getPublicUrl(`song/${songFile.originalname}`);
+
+    songURL = publicSongURLData?.publicUrl;
+
+    if (!songURL) {
+      return res.status(500).json({
+        error: "Failed to retrieve song public URL",
+        code: "SONG_URL_ERROR"
+      });
+    }
   }
 
-  // Insert post with the caption and image URL
+  // Insert post with the caption, image URL, and song URL
   const { data: postData, error: postError } = await supabase.from('posts').insert([
-    { caption, img_url: publicURL },
+    { caption, img_url: imageURL, song_url: songURL },
   ]);
 
   // Handle post creation error
@@ -82,4 +123,5 @@ router.post('/', upload.single('image'), async (req: any, res: any) => {
   // Respond with the created post data
   res.status(201).json(postData);
 });
+
 export default router;
