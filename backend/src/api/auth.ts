@@ -10,7 +10,18 @@ const supabaseUrl = process.env.SUPABASE_URL as string;
 const supabaseKey = process.env.SUPABASE_KEY as string;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Register a new user
+/**
+ * Route: /register
+ * @desc Registers a new user in the Supabase Auth system.
+ * @params:
+ *    - email: string, the user's email address.
+ *    - password: string, the user's password.
+ * @requestBody:
+ *    - { email: <string>, password: <string> }
+ * @response:
+ *    - Success: 201, { message: 'User registered successfully', user: <user data> }
+ *    - Failure: 400, { message: <error message> }
+ */
 router.post('/register', async (req: any, res: any) => {
   const { email, password } = req.body;
 
@@ -30,7 +41,18 @@ router.post('/register', async (req: any, res: any) => {
   });
 });
 
-// Log in a user
+/**
+ * Route: /login
+ * @desc Logs in an existing user and returns an access token.
+ * @params:
+ *    - email: string, the user's email address.
+ *    - password: string, the user's password.
+ * @requestBody:
+ *    - { email: <string>, password: <string> }
+ * @response:
+ *    - Success: 200, { message: 'Login successful', user: <user data>, accessToken: <JWT token> }
+ *    - Failure: 400, { message: <error message> }
+ */
 router.post('/login', async (req: any, res: any) => {
   const { email, password } = req.body;
 
@@ -57,7 +79,17 @@ router.post('/login', async (req: any, res: any) => {
   });
 });
 
-// Log out a user
+/**
+ * Route: /logout
+ * @desc Logs out the user by invalidating the current session.
+ * @params:
+ *    - accessToken: string, the user's JWT access token (used to identify the session).
+ * @requestBody:
+ *    - { accessToken: <string> }
+ * @response:
+ *    - Success: 200, { message: 'User signed out successfully' }
+ *    - Failure: 400, { message: <error message> }
+ */
 router.post('/logout', async (req: any, res: any) => {
   const { accessToken } = req.body;
 
