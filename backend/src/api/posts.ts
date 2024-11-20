@@ -21,7 +21,6 @@ router.get('/', async (req: any, res: any) => {
   }
   res.status(200).json(data);
 });
-
 // Handle file upload and post creation
 router.post('/', upload.single('image'), async (req: any, res: any) => {
   const { caption } = req.body;
@@ -51,9 +50,19 @@ router.post('/', upload.single('image'), async (req: any, res: any) => {
   }
 
   // Get the public URL of the uploaded file
-  const { data: publicURL } = supabase.storage
+  const { data: publicURLData } = supabase.storage
     .from('post') // Replace with your bucket name
     .getPublicUrl(`img/${file.originalname}`);
+
+  // Extract the URL from the response object
+  const publicURL = publicURLData?.publicUrl;
+
+  if (!publicURL) {
+    return res.status(500).json({
+      error: "Failed to retrieve public URL",
+      code: "URL_ERROR"
+    });
+  }
 
   // Insert post with the caption and image URL
   const { data: postData, error: postError } = await supabase.from('posts').insert([
@@ -73,5 +82,4 @@ router.post('/', upload.single('image'), async (req: any, res: any) => {
   // Respond with the created post data
   res.status(201).json(postData);
 });
-
 export default router;
