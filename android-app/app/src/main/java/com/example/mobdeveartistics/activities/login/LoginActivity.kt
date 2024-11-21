@@ -1,5 +1,6 @@
 package com.example.mobdeveartistics.activities.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mobdeveartistics.R
+import com.example.mobdeveartistics.activities.feed.MainActivity
 
 import com.example.mobdeveartistics.network.AuthApiService
 import com.example.mobdeveartistics.network.ApiService
@@ -64,14 +66,19 @@ class LoginActivity : AppCompatActivity() {
             AuthApiService().getRetrofitInstance().create(ApiService::class.java)
                 .login(loginRequest).enqueue(object : Callback<LoginResponse> {
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                        val loginResponse = response.body()
                         if (response.isSuccessful) {
-                            val loginResponse = response.body()
-                            Log.d("LoginActivity", "Welcome, ${response.message()}")
-                            Toast.makeText(this@LoginActivity, "Welcome, ${response.message()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "Welcome, ${loginResponse?.message}", Toast.LENGTH_SHORT).show()
+
+                            // User Data
                             val accessToken = loginResponse?.accessToken
+
+                            // TODO: Pass user data to other activities
+                            // Redirect back to feed
+                            val i = Intent(applicationContext, MainActivity::class.java)
+                            startActivity(i)
                         } else {
-                            Log.e("LoginActivity", "Login failed: ${response.message()}")
-                            Toast.makeText(this@LoginActivity, "Login failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "There was an issue with your sign-in. Please check your credentials and try again.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
