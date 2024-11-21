@@ -66,13 +66,12 @@ class LoginActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                         if (response.isSuccessful) {
                             val loginResponse = response.body()
-                            Log.d("LoginActivity", "Welcome, ${loginResponse?.user?.name}")
-                            // Toast.makeText(this@LoginActivity, "Welcome, ${loginResponse?.user?.name}", Toast.LENGTH_SHORT).show()
-                            // You can also access the accessToken if needed
+                            Log.d("LoginActivity", "Welcome, ${response.message()}")
+                            Toast.makeText(this@LoginActivity, "Welcome, ${response.message()}", Toast.LENGTH_SHORT).show()
                             val accessToken = loginResponse?.accessToken
                         } else {
                             Log.e("LoginActivity", "Login failed: ${response.message()}")
-                            // Toast.makeText(this@LoginActivity, "Login failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "Login failed: ${response.message()}", Toast.LENGTH_SHORT).show()
                         }
                     }
 

@@ -80,6 +80,7 @@ router.post('/login', async (req: any, res: any) => {
   console.log('Login successful for user:', data.user); // Log success message
 
   res.status(200).json({
+    isSuccessful: true,
     message: 'Login successful',
     user: data.user,
     accessToken: access_token  // Corrected to `access_token` from the session
