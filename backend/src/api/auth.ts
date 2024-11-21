@@ -36,6 +36,8 @@ router.post('/register', async (req: any, res: any) => {
     return res.status(400).json({ message: error.message });
   }
 
+  console.log('User  registered successfully:', data.user); // Log success message
+
   res.status(201).json({
     message: 'User  registered successfully',
     user: data.user
@@ -75,6 +77,8 @@ router.post('/login', async (req: any, res: any) => {
 
   const { access_token } = data.session;
 
+  console.log('Login successful for user:', data.user); // Log success message
+
   res.status(200).json({
     message: 'Login successful',
     user: data.user,
@@ -107,6 +111,8 @@ router.post('/logout', async (req: any, res: any) => {
     console.error('Logout error:', error); // Log the error to the console
     return res.status(400).json({ message: error.message });
   }
+
+  console.log('User  signed out successfully'); // Log success message
 
   res.status(200).json({ message: 'User  signed out successfully' });
 });
