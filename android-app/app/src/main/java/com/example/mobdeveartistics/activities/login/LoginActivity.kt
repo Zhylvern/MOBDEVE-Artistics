@@ -70,10 +70,12 @@ class LoginActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             Toast.makeText(this@LoginActivity, "Welcome, ${loginResponse?.message}", Toast.LENGTH_SHORT).show()
 
+                            // TODO: Pass user data to other activities
                             // User Data
                             val accessToken = loginResponse?.accessToken
+                            val userID = loginResponse?.user?.id
+                            val userEmail = loginResponse?.user?.id
 
-                            // TODO: Pass user data to other activities
                             // Redirect back to feed
                             val i = Intent(applicationContext, MainActivity::class.java)
                             startActivity(i)
