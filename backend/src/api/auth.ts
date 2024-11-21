@@ -19,7 +19,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
  * @requestBody:
  *    - { email: <string>, password: <string> }
  * @response:
- *    - Success: 201, { message: 'User registered successfully', user: <user data> }
+ *    - Success: 201, { message: 'User  registered successfully', user: <user data> }
  *    - Failure: 400, { message: <error message> }
  */
 router.post('/register', async (req: any, res: any) => {
@@ -32,11 +32,12 @@ router.post('/register', async (req: any, res: any) => {
   const { data, error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
+    console.error('Registration error:', error); // Log the error to the console
     return res.status(400).json({ message: error.message });
   }
 
   res.status(201).json({
-    message: 'User registered successfully',
+    message: 'User  registered successfully',
     user: data.user
   });
 });
@@ -63,10 +64,12 @@ router.post('/login', async (req: any, res: any) => {
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
+    console.error('Login error:', error); // Log the error to the console
     return res.status(400).json({ message: error.message });
   }
 
   if (!data?.session) {
+    console.error('Login error: Session not found'); // Log session not found error
     return res.status(400).json({ message: 'Session not found' });
   }
 
@@ -87,7 +90,7 @@ router.post('/login', async (req: any, res: any) => {
  * @requestBody:
  *    - { accessToken: <string> }
  * @response:
- *    - Success: 200, { message: 'User signed out successfully' }
+ *    - Success: 200, { message: 'User  signed out successfully' }
  *    - Failure: 400, { message: <error message> }
  */
 router.post('/logout', async (req: any, res: any) => {
@@ -101,10 +104,11 @@ router.post('/logout', async (req: any, res: any) => {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
+    console.error('Logout error:', error); // Log the error to the console
     return res.status(400).json({ message: error.message });
   }
 
-  res.status(200).json({ message: 'User signed out successfully' });
+  res.status(200).json({ message: 'User  signed out successfully' });
 });
 
 export default router;
