@@ -57,20 +57,20 @@ class MainActivity : AppCompatActivity() {
             Log.d("YourTag", "User   ID is NULL")
         }
 
-//        // Find the library and profile button layouts
-//        val libraryButton: View = findViewById(R.id.libraryButtonLayout)
-//        val profileButton: View = findViewById(R.id.profileButtonLayout)
-//
-//        // Check if accessToken_value and userID_value are null
-//        if (accessToken_value == null || userID_value == null) {
-//            // Hide the Library and Profile buttons if either is null
-//            libraryButton.visibility = View.GONE
-//            profileButton.visibility = View.GONE
-//        } else {
-//            // Show the Library and Profile buttons if both are present
-//            libraryButton.visibility = View.VISIBLE
-//            profileButton.visibility = View.VISIBLE
-//        }
+        // Find the library and profile button layouts
+        val libraryButton: View = findViewById(R.id.libraryButtonLayout)
+        val profileButton: View = findViewById(R.id.profileButtonLayout)
+
+        // Check if accessToken_value and userID_value are null
+        if (accessToken_value == null || userID_value == null) {
+            // Hide the Library and Profile buttons if either is null
+            libraryButton.visibility = View.GONE
+            profileButton.visibility = View.GONE
+        } else {
+            // Show the Library and Profile buttons if both are present
+            libraryButton.visibility = View.VISIBLE
+            profileButton.visibility = View.VISIBLE
+        }
 
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView?.layoutManager = LinearLayoutManager(this)

@@ -116,7 +116,7 @@
     <!--        </LinearLayout>-->
     <!--    </LinearLayout>-->
 
-    <include layout="@layout/navbar_layout" />
+<!--    <include layout="@layout/navbar_layout" />-->
 
 
     <!--    <LinearLayout-->
