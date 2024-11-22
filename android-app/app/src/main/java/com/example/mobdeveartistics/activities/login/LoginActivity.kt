@@ -74,10 +74,11 @@ class LoginActivity : AppCompatActivity() {
                             // User Data
                             val accessToken = loginResponse?.accessToken
                             val userID = loginResponse?.user?.id
-                            val userEmail = loginResponse?.user?.id
 
                             // Redirect back to feed
                             val i = Intent(applicationContext, MainActivity::class.java)
+                            i.putExtra("accessToken", accessToken)
+                            i.putExtra("userID", userID)
                             startActivity(i)
                         } else {
                             Toast.makeText(this@LoginActivity, "There was an issue with your sign-in. Please check your credentials and try again.", Toast.LENGTH_SHORT).show()
