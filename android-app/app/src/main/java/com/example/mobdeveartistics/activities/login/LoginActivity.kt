@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.mobdeveartistics.R
 import com.example.mobdeveartistics.activities.feed.MainActivity
 
-import com.example.mobdeveartistics.network.AuthApiService
+import com.example.mobdeveartistics.network.RetrofitApiService
 import com.example.mobdeveartistics.network.ApiService
 import com.example.mobdeveartistics.network.login.LoginRequest
 import com.example.mobdeveartistics.network.login.LoginResponse
@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                 return
             }
 
-            AuthApiService().getRetrofitInstance().create(ApiService::class.java)
+            RetrofitApiService().getRetrofitInstance().create(ApiService::class.java)
                 .login(loginRequest).enqueue(object : Callback<LoginResponse> {
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                         val loginResponse = response.body()
