@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveartistics.R
-import com.squareup.picasso.Picasso;
 
 class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mMediaBackground: ImageView =
@@ -22,18 +21,21 @@ class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mCaption: TextView =
         itemView.findViewById(R.id.caption)
 
-//    fun setmMediaBackground(iv: String) {
-//        mMediaBackground.setImageResource(iv)
-//    }
-
-    fun setmMediaBackground(iv: String?) {
+    fun setmMediaBackground(url: String?) {
         // Log the URL before loading the image
-        Log.d("FeedViewHolder", "Loading image from URL")
+        Log.d("FeedViewHolder", "Loading image from URL: $url")
 
-        Picasso.get()
-            .load("http://i.imgur.com/DvpvklR.png") // This will still load the sample URL must chage to actual db content
-            .into(mMediaBackground)
-
+        // Check if the URL is not null or empty
+        if (!url.isNullOrEmpty()) {
+            Picasso.get()
+                .load(url) // Use the actual URL from the database
+                .placeholder(R.drawable.media_background_1) // Optional: Set a placeholder image
+                .error(R.drawable.mizuki) // Optional: Set an error image
+                .into(mMediaBackground)
+        } else {
+            // Optionally, set a default image if the URL is null or empty
+            mMediaBackground.setImageResource(R.drawable.mizuki) // Set an error image or a default image
+        }
     }
 
     fun setmProfileImage(iv: Int) {

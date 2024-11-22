@@ -25,16 +25,16 @@ class FeedAdapter(private val dataList: MutableList<Post>) :
 
 
         // Set the media background to imgUrl
-         holder.setmMediaBackground(data.imgUrl)
+         holder.setmMediaBackground(data.img_url)
 
         // Set the profile image based on the username
         // holder.setmProfileImage(data.username) // Assuming you have a method to handle this
 
         // Set the comment count
-        holder.setmCommentCount(data.commentCount.toString())
+        holder.setmCommentCount(data.comment_count.toString())
 
         // Set the like count
-        holder.setmLikeCount(data.likeCount.toString())
+        holder.setmLikeCount(data.like_count.toString())
 
         // Set the original poster (username)
         holder.setmOriginalPoster(data.username)

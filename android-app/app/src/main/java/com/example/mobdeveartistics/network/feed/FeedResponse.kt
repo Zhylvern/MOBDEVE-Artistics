@@ -6,13 +6,13 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Post (
     val id: String,
-    val createdAt: String,
+    val created_at: String,
     val username: String?,
     val caption: String,
-    val likeCount: Int,
-    val commentCount: Int,
+    val like_count: Int,
+    val comment_count: Int,
     @SerialName(value = "imgUrl")
-    val imgUrl: String,
-    val songUrl: String
+    val img_url: String,
+    val song_url: String
 
 )
