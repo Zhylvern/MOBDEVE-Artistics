@@ -25,7 +25,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="-219dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/profile" />
+        android:src="@drawable/profile_navbar" />
 
     <ImageView
         android:id="@+id/likeButton"

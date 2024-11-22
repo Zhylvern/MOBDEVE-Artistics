@@ -30,12 +30,12 @@ class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         if (!url.isNullOrEmpty()) {
             Picasso.get()
                 .load(url) // Use the actual URL from the database
-                .placeholder(R.drawable.media_background_1) // Optional: Set a placeholder image
-                .error(R.drawable.mizuki) // Optional: Set an error image
+//                .placeholder(R.drawable.media_background_1) // Optional: Set a placeholder image
+                .error(R.drawable.error_img) // Optional: Set an error image
                 .into(mMediaBackground)
         } else {
             // Optionally, set a default image if the URL is null or empty
-            mMediaBackground.setImageResource(R.drawable.mizuki) // Set an error image or a default image
+            mMediaBackground.setImageResource(R.drawable.error_img) // Set an error image or a default image
         }
     }
 
