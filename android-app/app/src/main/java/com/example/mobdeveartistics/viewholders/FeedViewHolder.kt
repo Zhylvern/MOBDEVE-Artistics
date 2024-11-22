@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveartistics.R
+import com.squareup.picasso.Picasso
 
 class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mMediaBackground: ImageView =
