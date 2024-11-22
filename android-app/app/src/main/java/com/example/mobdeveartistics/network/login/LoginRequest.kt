@@ -1,4 +1,4 @@
-package com.example.mobdeveartistics.network
+package com.example.mobdeveartistics.network.login
 
 data class LoginRequest(
     val email: String,

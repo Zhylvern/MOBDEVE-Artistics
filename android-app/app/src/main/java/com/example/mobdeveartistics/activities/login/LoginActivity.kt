@@ -18,8 +18,8 @@ import com.example.mobdeveartistics.activities.feed.MainActivity
 
 import com.example.mobdeveartistics.network.AuthApiService
 import com.example.mobdeveartistics.network.ApiService
-import com.example.mobdeveartistics.network.LoginRequest
-import com.example.mobdeveartistics.network.LoginResponse
+import com.example.mobdeveartistics.network.login.LoginRequest
+import com.example.mobdeveartistics.network.login.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
