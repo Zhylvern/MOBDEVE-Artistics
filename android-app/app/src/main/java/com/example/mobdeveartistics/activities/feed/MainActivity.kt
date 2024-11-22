@@ -1,7 +1,9 @@
 package com.example.mobdeveartistics.activities.feed
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,13 +22,55 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+
+
+
+
+
+
     private var recyclerView: RecyclerView? = null
     private var adapter: FeedAdapter? = null
     private var postList: MutableList<Post> = mutableListOf() // Mutable list to hold posts
 
+
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.feed_activity_main)
+
+        // Retrieve the intent and its extras
+        val intent: Intent = intent
+        val accessToken_value: String? = intent.getStringExtra("accessToken")
+        val userID_value: String? = intent.getStringExtra("userID")
+
+        // Log statements for debugging
+        if (accessToken_value != null) {
+            Log.d("YourTag", "Access Token: $accessToken_value")
+        } else {
+            Log.d("YourTag", "Access Token is NULL")
+        }
+
+        if (userID_value != null) {
+            Log.d("YourTag", "User   ID: $userID_value")
+        } else {
+            Log.d("YourTag", "User   ID is NULL")
+        }
+
+//        // Find the library and profile button layouts
+//        val libraryButton: View = findViewById(R.id.libraryButtonLayout)
+//        val profileButton: View = findViewById(R.id.profileButtonLayout)
+//
+//        // Check if accessToken_value and userID_value are null
+//        if (accessToken_value == null || userID_value == null) {
+//            // Hide the Library and Profile buttons if either is null
+//            libraryButton.visibility = View.GONE
+//            profileButton.visibility = View.GONE
+//        } else {
+//            // Show the Library and Profile buttons if both are present
+//            libraryButton.visibility = View.VISIBLE
+//            profileButton.visibility = View.VISIBLE
+//        }
 
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView?.layoutManager = LinearLayoutManager(this)
