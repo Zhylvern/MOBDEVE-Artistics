@@ -1,10 +1,12 @@
 package com.example.mobdeveartistics.viewholders
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobdeveartistics.R
+import com.squareup.picasso.Picasso;
 
 class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mMediaBackground: ImageView =
@@ -20,8 +22,18 @@ class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val mCaption: TextView =
         itemView.findViewById(R.id.caption)
 
-    fun setmMediaBackground(iv: Int) {
-        mMediaBackground.setImageResource(iv)
+//    fun setmMediaBackground(iv: String) {
+//        mMediaBackground.setImageResource(iv)
+//    }
+
+    fun setmMediaBackground(iv: String?) {
+        // Log the URL before loading the image
+        Log.d("FeedViewHolder", "Loading image from URL")
+
+        Picasso.get()
+            .load("http://i.imgur.com/DvpvklR.png") // This will still load the sample URL must chage to actual db content
+            .into(mMediaBackground)
+
     }
 
     fun setmProfileImage(iv: Int) {

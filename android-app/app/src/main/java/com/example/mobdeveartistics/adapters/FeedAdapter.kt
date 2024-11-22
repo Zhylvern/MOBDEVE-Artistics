@@ -1,5 +1,6 @@
 package com.example.mobdeveartistics.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +20,12 @@ class FeedAdapter(private val dataList: MutableList<Post>) :
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         val data = dataList[position]
 
+        // Log the image URL to see if it's valid
+//        Log.d("FeedAdapter", "Loading image from URL: ${data.imgUrl}")
+
+
         // Set the media background to imgUrl
-        // holder.setmMediaBackground(data.imgUrl)
+         holder.setmMediaBackground(data.imgUrl)
 
         // Set the profile image based on the username
         // holder.setmProfileImage(data.username) // Assuming you have a method to handle this
