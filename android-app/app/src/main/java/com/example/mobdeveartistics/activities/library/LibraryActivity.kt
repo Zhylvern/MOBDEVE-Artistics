@@ -2,6 +2,7 @@ package com.example.mobdeveartistics.activities.library
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -48,6 +49,41 @@ class LibraryActivity : AppCompatActivity() {
         val intent: Intent = intent
         accessToken_value = intent.getStringExtra("accessToken") // Assign to class-level variable
         userID_value = intent.getStringExtra("userID") // Assign to class-level variable
+
+        // Log statements for debugging
+        if (accessToken_value != null) {
+            Log.d("YourTag", "Access Token: $accessToken_value")
+        } else {
+            Log.d("YourTag", "Access Token is NULL")
+        }
+
+        if (userID_value != null) {
+            Log.d("YourTag", "User   ID: $userID_value")
+        } else {
+            Log.d("YourTag", "User   ID is NULL")
+        }
+
+        // Find the nav button layouts
+        val libraryButton: View = findViewById(R.id.libraryButtonLayout)
+        val profileButton: View = findViewById(R.id.profileButtonLayout)
+        val navLoginButton: View = findViewById(R.id.loginButtonLayout)
+        val navLogoutButton: View = findViewById(R.id.logoutButtonLayout)
+
+        // Check if accessToken_value and userID_value are null
+        if (accessToken_value == null || userID_value == null) {
+            // Hide the Library and Profile buttons if either is null
+            libraryButton.visibility = View.GONE
+            profileButton.visibility = View.GONE
+            navLoginButton.visibility = View.VISIBLE
+            navLogoutButton.visibility = View.GONE
+        } else {
+            // Show the Library and Profile buttons if both are present
+            libraryButton.visibility = View.VISIBLE
+            profileButton.visibility = View.VISIBLE
+            navLoginButton.visibility = View.GONE
+            navLogoutButton.visibility = View.VISIBLE
+
+        }
 
         likedTracks = findViewById(R.id.libCat_likedTracks)
         playlists = findViewById(R.id.libCat_playlists)
@@ -119,6 +155,17 @@ class LibraryActivity : AppCompatActivity() {
         i.putExtra("accessToken", accessToken_value) // Pass the access token
         i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
+    }
+
+    fun navLogoutButton(v: View?) {
+        // Set accessToken and userID to null
+        accessToken_value = null
+        userID_value = null
+
+        val i = Intent(applicationContext, MainActivity::class.java)
+        startActivity(i)
+
+        Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
     }
 }
 

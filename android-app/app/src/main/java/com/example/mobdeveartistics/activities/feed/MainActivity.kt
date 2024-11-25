@@ -54,19 +54,26 @@ class MainActivity : AppCompatActivity() {
             Log.d("YourTag", "User   ID is NULL")
         }
 
-        // Find the library and profile button layouts
+        // Find the nav button layouts
         val libraryButton: View = findViewById(R.id.libraryButtonLayout)
         val profileButton: View = findViewById(R.id.profileButtonLayout)
+        val navLoginButton: View = findViewById(R.id.loginButtonLayout)
+        val navLogoutButton: View = findViewById(R.id.logoutButtonLayout)
 
         // Check if accessToken_value and userID_value are null
         if (accessToken_value == null || userID_value == null) {
             // Hide the Library and Profile buttons if either is null
             libraryButton.visibility = View.GONE
             profileButton.visibility = View.GONE
+            navLoginButton.visibility = View.VISIBLE
+            navLogoutButton.visibility = View.GONE
         } else {
             // Show the Library and Profile buttons if both are present
             libraryButton.visibility = View.VISIBLE
             profileButton.visibility = View.VISIBLE
+            navLoginButton.visibility = View.GONE
+            navLogoutButton.visibility = View.VISIBLE
+
         }
 
         recyclerView = findViewById(R.id.recycler_view)
@@ -135,5 +142,16 @@ class MainActivity : AppCompatActivity() {
     fun navLoginButton(v: View?) {
         val i = Intent(applicationContext, LoginActivity::class.java)
         startActivity(i)
+    }
+
+    fun navLogoutButton(v: View?) {
+        // Set accessToken and userID to null
+        accessToken_value = null
+        userID_value = null
+
+        val i = Intent(applicationContext, MainActivity::class.java)
+        startActivity(i)
+
+        Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
     }
 }
