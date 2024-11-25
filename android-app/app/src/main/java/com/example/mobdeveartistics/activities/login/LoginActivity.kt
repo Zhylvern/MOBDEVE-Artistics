@@ -20,6 +20,8 @@ import com.example.mobdeveartistics.network.RetrofitApiService
 import com.example.mobdeveartistics.network.ApiService
 import com.example.mobdeveartistics.network.login.LoginRequest
 import com.example.mobdeveartistics.network.login.LoginResponse
+import com.example.mobdeveartistics.network.register.RegisterRequest
+import com.example.mobdeveartistics.network.register.RegisterResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,7 +72,6 @@ class LoginActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             Toast.makeText(this@LoginActivity, "Welcome, ${loginResponse?.message}", Toast.LENGTH_SHORT).show()
 
-                            // TODO: Pass user data to other activities
                             // User Data
                             val accessToken = loginResponse?.accessToken
                             val userID = loginResponse?.user?.id
@@ -96,6 +97,37 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun btnSignUpClicked(v: View?) {
-        Toast.makeText(this@LoginActivity, "Sign Up button clicked!", Toast.LENGTH_SHORT).show()
+        try {
+            val email = etEmail?.text.toString()
+            val password = etPassword?.text.toString()
+
+            val registerRequest = RegisterRequest(email, password)
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            RetrofitApiService().getRetrofitInstance().create(ApiService::class.java)
+                .register(registerRequest).enqueue(object : Callback<RegisterResponse> {
+                    override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                        val registerResponse = response.body()
+                        if (response.isSuccessful) {
+                            Toast.makeText(this@LoginActivity, "Welcome, ${registerResponse?.message}", Toast.LENGTH_SHORT).show()
+
+
+                        } else {
+                            Toast.makeText(this@LoginActivity, "There was an issue with your sign-up.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                        Toast.makeText(this@LoginActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        } catch (e: Exception) {
+            Log.e("SignUpActivity", "Exception occurred: ${e.message}")
+            Toast.makeText(this, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
     }
 }
