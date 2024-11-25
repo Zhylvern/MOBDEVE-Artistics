@@ -29,6 +29,9 @@ class LibraryActivity : AppCompatActivity() {
     private val songHistoryList: ArrayList<SongRow> = SongRowGenerator.generateListHistData()
     private lateinit var rvListHist: RecyclerView
 
+    private var accessToken_value: String? = null
+    private var userID_value: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.library_activity)
@@ -41,6 +44,10 @@ class LibraryActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val intent: Intent = intent
+        accessToken_value = intent.getStringExtra("accessToken") // Assign to class-level variable
+        userID_value = intent.getStringExtra("userID") // Assign to class-level variable
 
         likedTracks = findViewById(R.id.libCat_likedTracks)
         playlists = findViewById(R.id.libCat_playlists)
@@ -55,41 +62,30 @@ class LibraryActivity : AppCompatActivity() {
     }
 
     fun likedTracksClicked(v: View?) {
-        val i = Intent(
-            this@LibraryActivity,
-            LikedTracksActivity::class.java
-        )
+        val i = Intent(this@LibraryActivity, LikedTracksActivity::class.java)
         startActivity(i)
     }
 
     fun playlistsClicked(v: View?) {
-        val i = Intent(
-            this@LibraryActivity,
-            PlaylistsActivity::class.java
+        val i = Intent(this@LibraryActivity, PlaylistsActivity::class.java
         )
         startActivity(i)
     }
 
     fun followingClicked(v: View?) {
-        val i = Intent(
-            this@LibraryActivity,
-            FollowingActivity::class.java
+        val i = Intent(this@LibraryActivity, FollowingActivity::class.java
         )
         startActivity(i)
     }
 
     fun followersClicked(v: View?) {
-        val i = Intent(
-            this@LibraryActivity,
-            FollowersActivity::class.java
+        val i = Intent(this@LibraryActivity, FollowersActivity::class.java
         )
         startActivity(i)
     }
 
     fun yourUploadsClicked(v: View?) {
-        val i = Intent(
-            this@LibraryActivity,
-            UploadActivity::class.java
+        val i = Intent(this@LibraryActivity, UploadActivity::class.java
         )
         startActivity(i)
     }
@@ -104,25 +100,24 @@ class LibraryActivity : AppCompatActivity() {
     }
 
     //Navbar Buttons
-    fun nav_home_button(v: View?) {
-        val i = Intent(applicationContext, MainActivity::class.java)
+    fun nav_home_button(v: View?) { val i = Intent(applicationContext, MainActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
 
     fun nav_library_button(v: View?) {
-        val i = Intent(
-            applicationContext,
-            LibraryActivity::class.java
-        )
+        val i = Intent(applicationContext, LibraryActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
     fun nav_profile_button(v: View?) {
-        val i = Intent(
-            applicationContext,
-            ProfileActivity::class.java
-        )
+        val i = Intent(applicationContext, ProfileActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 }

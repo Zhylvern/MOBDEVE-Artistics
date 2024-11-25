@@ -3,6 +3,7 @@ package com.example.mobdeveartistics.activities.profile
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,7 +15,12 @@ import com.example.mobdeveartistics.R
 import com.example.mobdeveartistics.activities.feed.MainActivity
 import com.example.mobdeveartistics.activities.library.LibraryActivity
 
+
+
 class ProfileActivity : AppCompatActivity() {
+    private var accessToken_value: String? = null
+    private var userID_value: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.enableEdgeToEdge()
@@ -25,6 +31,23 @@ class ProfileActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val intent: Intent = intent
+        accessToken_value = intent.getStringExtra("accessToken") // Assign to class-level variable
+        userID_value = intent.getStringExtra("userID") // Assign to class-level variable
+
+        // Log statements for debugging
+        if (accessToken_value != null) {
+            Log.d("YourTag", "Access Token: $accessToken_value")
+        } else {
+            Log.d("YourTag", "Access Token is NULL")
+        }
+
+        if (userID_value != null) {
+            Log.d("YourTag", "User   ID: $userID_value")
+        } else {
+            Log.d("YourTag", "User   ID is NULL")
         }
     }
 
@@ -68,29 +91,31 @@ class ProfileActivity : AppCompatActivity() {
 
     fun backToFeed(v: View?) {
         val i = Intent(applicationContext, MainActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
     //Navbar Buttons
     fun nav_home_button(v: View?) {
         val i = Intent(applicationContext, MainActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
 
     fun nav_library_button(v: View?) {
-        val i = Intent(
-            applicationContext,
-            LibraryActivity::class.java
-        )
+        val i = Intent(applicationContext, LibraryActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
     fun nav_profile_button(v: View?) {
-        val i = Intent(
-            applicationContext,
-            ProfileActivity::class.java
-        )
+        val i = Intent(applicationContext, ProfileActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 }

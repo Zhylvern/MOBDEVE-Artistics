@@ -24,14 +24,11 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
 
-
-
-
-
     private var recyclerView: RecyclerView? = null
     private var adapter: FeedAdapter? = null
     private var postList: MutableList<Post> = mutableListOf() // Mutable list to hold posts
-
+    private var accessToken_value: String? = null
+    private var userID_value: String? = null
 
 
     @SuppressLint("MissingInflatedId")
@@ -41,8 +38,8 @@ class MainActivity : AppCompatActivity() {
 
         // Retrieve the intent and its extras
         val intent: Intent = intent
-        val accessToken_value: String? = intent.getStringExtra("accessToken")
-        val userID_value: String? = intent.getStringExtra("userID")
+        accessToken_value = intent.getStringExtra("accessToken") // Assign to class-level variable
+        userID_value = intent.getStringExtra("userID") // Assign to class-level variable
 
         // Log statements for debugging
         if (accessToken_value != null) {
@@ -107,22 +104,30 @@ class MainActivity : AppCompatActivity() {
    // Navbar
     fun onClickProfile(v: View?) {
         val i = Intent(applicationContext, ProfileActivity::class.java)
+       i.putExtra("accessToken", accessToken_value) // Pass the access token
+       i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
     // Navbar Buttons
     fun nav_home_button(v: View?) {
         val i = Intent(applicationContext, MainActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
     fun nav_library_button(v: View?) {
         val i = Intent(applicationContext, LibraryActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
     fun nav_profile_button(v: View?) {
         val i = Intent(applicationContext, ProfileActivity::class.java)
+        i.putExtra("accessToken", accessToken_value) // Pass the access token
+        i.putExtra("userID", userID_value) // Pass the user ID
         startActivity(i)
     }
 
