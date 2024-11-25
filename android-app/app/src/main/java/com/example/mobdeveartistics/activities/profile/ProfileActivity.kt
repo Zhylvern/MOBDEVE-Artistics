@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.mobdeveartistics.R
 import com.example.mobdeveartistics.activities.feed.MainActivity
 import com.example.mobdeveartistics.activities.library.LibraryActivity
-
+import com.example.mobdeveartistics.activities.login.LoginActivity
 
 
 class ProfileActivity : AppCompatActivity() {
@@ -52,6 +52,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Find the nav button layouts
+        val homeButton: View = findViewById(R.id.homeButtonLayout)
         val libraryButton: View = findViewById(R.id.libraryButtonLayout)
         val profileButton: View = findViewById(R.id.profileButtonLayout)
         val navLoginButton: View = findViewById(R.id.loginButtonLayout)
@@ -59,13 +60,15 @@ class ProfileActivity : AppCompatActivity() {
 
         // Check if accessToken_value and userID_value are null
         if (accessToken_value == null || userID_value == null) {
-            // Hide the Library and Profile buttons if either is null
+            // Hide the buttons if either is null
+            homeButton.visibility = View.GONE
             libraryButton.visibility = View.GONE
             profileButton.visibility = View.GONE
             navLoginButton.visibility = View.VISIBLE
             navLogoutButton.visibility = View.GONE
         } else {
-            // Show the Library and Profile buttons if both are present
+            // Show the buttons if both are present
+            homeButton.visibility = View.VISIBLE
             libraryButton.visibility = View.VISIBLE
             profileButton.visibility = View.VISIBLE
             navLoginButton.visibility = View.GONE
@@ -139,6 +142,12 @@ class ProfileActivity : AppCompatActivity() {
         val i = Intent(applicationContext, ProfileActivity::class.java)
         i.putExtra("accessToken", accessToken_value) // Pass the access token
         i.putExtra("userID", userID_value) // Pass the user ID
+        startActivity(i)
+    }
+
+    // Temp Login Button
+    fun navLoginButton(v: View?) {
+        val i = Intent(applicationContext, LoginActivity::class.java)
         startActivity(i)
     }
 
