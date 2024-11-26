@@ -3,6 +3,8 @@ package com.example.mobdeveartistics.viewholders
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -70,27 +72,59 @@ class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun setmSong(url: String?) {
         mSong.text = "Play Audio" // Set initial text
+        var playbackPosition = 0 // Variable to store the playback position
+
+        val handler = Handler(Looper.getMainLooper()) // Handler to update UI
+        val updateTimestampRunnable = object : Runnable {
+            override fun run() {
+                mediaPlayer?.let {
+                    if (isPlaying) {
+                        val currentTime = it.currentPosition / 1000 // Current time in seconds
+                        mSong.text = "Pause Audio - ${formatTime(currentTime)}" // Update button text with timestamp
+                        handler.postDelayed(this, 1000) // Repeat every second
+                    }
+                }
+            }
+        }
+
         mSong.setOnClickListener {
             if (isPlaying) {
                 // If currently playing, pause the audio
+                playbackPosition = mediaPlayer?.currentPosition ?: 0 // Save current position
                 mediaPlayer?.pause()
                 mSong.text = "Play Audio" // Change button text
                 isPlaying = false // Update the playing state
+                handler.removeCallbacks(updateTimestampRunnable) // Stop updating timestamp
             } else {
-                // If not playing, start the audio
-                if (mediaPlayer != null) {
-                    mediaPlayer?.release() // Release any existing media player
+                // If not playing, start or resume the audio
+                if (mediaPlayer == null) {
+                    // Create a new MediaPlayer instance if it doesn't exist
+                    mediaPlayer = MediaPlayer().apply {
+                        setDataSource(url) // Set the audio source
+                        prepare() // Prepare the MediaPlayer
+                        seekTo(playbackPosition) // Seek to the saved position
+                        start() // Start playback
+                    }
+                } else {
+                    // Resume playback if MediaPlayer already exists
+                    mediaPlayer?.seekTo(playbackPosition) // Seek to the saved position
+                    mediaPlayer?.start() // Resume playback
                 }
-                mediaPlayer = MediaPlayer().apply {
-                    setDataSource(url) // Set the audio source
-                    prepare() // Prepare the MediaPlayer
-                    start() // Start playback
-                }
-                mSong.text = "Pause Audio" // Change button text
+                mSong.text = "Pause Audio - ${formatTime(0)}" // Show "Pause Audio" and initial timestamp
                 isPlaying = true // Update the playing state
+                handler.post(updateTimestampRunnable) // Start updating timestamp
             }
         }
     }
+
+    // Utility function to format time in mm:ss
+    fun formatTime(seconds: Int): String {
+        val minutes = seconds / 60
+        val secs = seconds % 60
+        return String.format("%02d:%02d", minutes, secs)
+    }
+
+
     // Don't forget to release the MediaPlayer in the ViewHolder's finalizer
     fun releasePlayer() {
         mediaPlayer?.release()
