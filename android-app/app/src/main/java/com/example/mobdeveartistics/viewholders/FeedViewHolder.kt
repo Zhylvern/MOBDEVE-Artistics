@@ -1,5 +1,8 @@
 package com.example.mobdeveartistics.viewholders
 
+import android.content.Intent
+import android.media.MediaPlayer
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -21,6 +24,8 @@ class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.findViewById(R.id.originalPoster)
     private val mCaption: TextView =
         itemView.findViewById(R.id.caption)
+    private val mSong: TextView =
+        itemView.findViewById(R.id.songFeedButton)
 
     fun setmMediaBackground(url: String?) {
         // Log the URL before loading the image
@@ -58,4 +63,38 @@ class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun setmCaption(tv: String?) {
         mCaption.text = tv
     }
+
+    private var mediaPlayer: MediaPlayer? = null
+
+    private var isPlaying: Boolean = false // Variable to track if the audio is playing
+
+    fun setmSong(url: String?) {
+        mSong.text = "Play Audio" // Set initial text
+        mSong.setOnClickListener {
+            if (isPlaying) {
+                // If currently playing, pause the audio
+                mediaPlayer?.pause()
+                mSong.text = "Play Audio" // Change button text
+                isPlaying = false // Update the playing state
+            } else {
+                // If not playing, start the audio
+                if (mediaPlayer != null) {
+                    mediaPlayer?.release() // Release any existing media player
+                }
+                mediaPlayer = MediaPlayer().apply {
+                    setDataSource(url) // Set the audio source
+                    prepare() // Prepare the MediaPlayer
+                    start() // Start playback
+                }
+                mSong.text = "Pause Audio" // Change button text
+                isPlaying = true // Update the playing state
+            }
+        }
+    }
+    // Don't forget to release the MediaPlayer in the ViewHolder's finalizer
+    fun releasePlayer() {
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
 }

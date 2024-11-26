@@ -41,6 +41,15 @@ class FeedAdapter(private val dataList: MutableList<Post>) :
 
         // Set the caption
         holder.setmCaption(data.caption)
+
+        // Set the song
+        holder.setmSong(data.song_url)
+
+    }
+
+    override fun onViewRecycled(holder: FeedViewHolder) {
+        super.onViewRecycled(holder)
+        holder.releasePlayer() // Release MediaPlayer resources
     }
 
     override fun getItemCount(): Int {
