@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -13,8 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVEArtistics"
-        tools:targetApi="31"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".activities.library.UploadFormActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.library.UploadActivity"
             android:exported="false" />
@@ -52,5 +58,5 @@
             android:name=".activities.login.LoginActivity"
             android:exported="false" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

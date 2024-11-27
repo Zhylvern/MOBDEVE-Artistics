@@ -53,7 +53,7 @@
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
                         android:onClick="editProfileImage"
-                        app:srcCompat="@drawable/mizuki" />
+                        app:srcCompat="@drawable/user_icon_male" />
 
                 </androidx.cardview.widget.CardView>
 

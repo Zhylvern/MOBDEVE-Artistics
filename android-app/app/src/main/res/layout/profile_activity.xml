@@ -36,7 +36,7 @@
             android:id="@+id/profile_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Akiyama Mizuki"
+            android:text="Username"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="18sp"/>
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/mizuki" />
+                app:srcCompat="@drawable/user_icon_male" />
 
         </androidx.cardview.widget.CardView>
 
@@ -98,7 +98,7 @@
                 android:id="@+id/profile_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@amia"
+                android:text="Tag"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:gravity="center_vertical" />
@@ -172,7 +172,7 @@
                 android:id="@+id/profile_bio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anything's welcome as long as its cute!"
+                android:text="Bio"
                 android:textColor="@color/white"
                 android:gravity="center_vertical" />
 

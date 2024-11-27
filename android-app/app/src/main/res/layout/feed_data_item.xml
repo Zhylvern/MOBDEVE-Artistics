@@ -16,209 +16,106 @@
         android:focusable="true"
         android:scaleType="centerCrop" />
 
-    <ImageView
-        android:id="@+id/profileImage"
-        android:onClick="onClickProfile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/mediaBackground"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="-219dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/profile" />
+<!--    <View-->
+<!--        android:id="@+id/gradientOverlay"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@drawable/gradient_overlay" />-->
 
-    <ImageView
-        android:id="@+id/likeButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
+    <LinearLayout
+        android:id="@+id/userActionLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="492dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/like" />
+        android:layout_marginTop="350dp"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/commentButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/likeButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/comment" />
+        <ImageView
+            android:id="@+id/profileImage"
+            android:onClick="onClickProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/profile_navbar" />
 
-    <TextView
-        android:id="@+id/commentCount"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:layout_below="@id/commentButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="6"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/likeButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/like" />
 
-    <TextView
-        android:id="@+id/likeCount"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:layout_below="@id/likeButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="116"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/likeCount"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:text="116"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/commentButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/comment" />
+
+        <TextView
+            android:id="@+id/commentCount"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="6"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/mediaBackground"
-        android:layout_marginTop="-70dp"
-        android:orientation="vertical">
+        android:layout_marginTop="-150dp"
+        android:layout_marginStart="10dp"
+    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/originalPoster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hiraya"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/originalPoster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hiraya"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="this is my song"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/caption"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="this is my song"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:ellipsize="none"
+        android:scrollHorizontally="false" />
 
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/userInfoLayout"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/originalPoster"-->
-    <!--        android:layout_marginTop="4dp"-->
-    <!--        android:orientation="horizontal">-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:layout_marginStart="8dp"-->
-    <!--            android:orientation="vertical">-->
-
-    <!--        </LinearLayout>-->
-    <!--    </LinearLayout>-->
-
-    <include layout="@layout/navbar_layout" />
+</LinearLayout>
 
 
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/linearLayout"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="vertical"-->
-    <!--        android:padding="5dp"-->
-    <!--        android:background="@drawable/black_with_white_outline"-->
-    <!--        android:layout_alignParentBottom="true">-->
+<Button
+        android:id="@+id/songFeedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Audio"
+        android:layout_marginTop="580dp"
+        android:layout_centerHorizontal="true" />
 
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:orientation="horizontal"-->
-    <!--            android:gravity="center">-->
 
-    <!--            <LinearLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:orientation="vertical"-->
-    <!--                android:gravity="center">-->
 
-    <!--                <ImageView-->
-    <!--                    android:layout_width="20dp"-->
-    <!--                    android:layout_height="20dp"-->
-    <!--                    android:src="@drawable/home_icon" />-->
-
-    <!--                <TextView-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:text="Home"-->
-    <!--                    android:textColor="@android:color/white"-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    android:gravity="center" />-->
-    <!--            </LinearLayout>-->
-
-    <!--            <LinearLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:orientation="vertical"-->
-    <!--                android:gravity="center"-->
-    <!--                android:layout_marginStart="20dp">-->
-
-    <!--                <ImageView-->
-    <!--                    android:layout_width="20dp"-->
-    <!--                    android:layout_height="20dp"-->
-    <!--                    android:src="@drawable/add_icon" />-->
-
-    <!--                <TextView-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:text="Add"-->
-    <!--                    android:textColor="@android:color/white"-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    android:gravity="center" />-->
-    <!--            </LinearLayout>-->
-
-    <!--            <LinearLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:orientation="vertical"-->
-    <!--                android:gravity="center"-->
-    <!--                android:layout_marginStart="20dp">-->
-
-    <!--                <ImageView-->
-    <!--                    android:layout_width="20dp"-->
-    <!--                    android:layout_height="20dp"-->
-    <!--                    android:src="@drawable/library_icon" />-->
-
-    <!--                <TextView-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:text="Library"-->
-    <!--                    android:textColor="@android:color/white"-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    android:gravity="center" />-->
-    <!--            </LinearLayout>-->
-
-    <!--            <LinearLayout-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:orientation="vertical"-->
-    <!--                android:gravity="center"-->
-    <!--                android:layout_marginStart="20dp">-->
-
-    <!--                <ImageView-->
-    <!--                    android:layout_width="20dp"-->
-    <!--                    android:layout_height="20dp"-->
-    <!--                    android:src="@drawable/profile_navbar" />-->
-
-    <!--                <TextView-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:text="Profile"-->
-    <!--                    android:textColor="@android:color/white"-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    android:gravity="center" />-->
-    <!--            </LinearLayout>-->
-
-    <!--        </LinearLayout>-->
-    <!--    </LinearLayout>-->
 
 
 

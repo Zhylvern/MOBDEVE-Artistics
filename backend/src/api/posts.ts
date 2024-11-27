@@ -30,6 +30,7 @@ router.post('/', upload.fields([{ name: 'image' }, { name: 'song' }]), async (re
 
   // Check if at least one file was uploaded (image or song)
   if (!imageFile && !songFile) {
+    console.log("No files uploaded");
     return res.status(400).json({ error: 'No files uploaded' });
   }
 
@@ -64,6 +65,7 @@ router.post('/', upload.fields([{ name: 'image' }, { name: 'song' }]), async (re
     imageURL = publicImageURLData?.publicUrl;
 
     if (!imageURL) {
+      console.log("Failed to retrieve image public URL");
       return res.status(500).json({
         error: "Failed to retrieve image public URL",
         code: "IMAGE_URL_ERROR"
@@ -98,6 +100,7 @@ router.post('/', upload.fields([{ name: 'image' }, { name: 'song' }]), async (re
     songURL = publicSongURLData?.publicUrl;
 
     if (!songURL) {
+      console.log("Failed to retrieve song public URL");
       return res.status(500).json({
         error: "Failed to retrieve song public URL",
         code: "SONG_URL_ERROR"
@@ -121,6 +124,7 @@ router.post('/', upload.fields([{ name: 'image' }, { name: 'song' }]), async (re
   }
 
   // Respond with the created post data
+  console.log("Post created successfully", postData);
   res.status(201).json(postData);
 });
 
