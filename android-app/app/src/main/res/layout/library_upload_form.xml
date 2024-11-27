@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload a Song"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:id="@+id/songLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Song (MP3)"
+        android:textColor="@color/white"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/uploadSongButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Song"
+        android:textColor="@color/white"
+        android:layout_below="@id/songLabel"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/songJacketLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Song Jacket (IMG)"
+        android:textColor="@color/white"
+        android:layout_below="@id/uploadSongButton"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/uploadJacketButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Jacket"
+        android:layout_below="@id/songJacketLabel"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/captionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Caption"
+        android:textColor="@color/white"
+        android:layout_below="@id/uploadJacketButton"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/captionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter caption"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_below="@id/captionLabel"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_below="@id/captionEditText"/>
+
+</RelativeLayout>

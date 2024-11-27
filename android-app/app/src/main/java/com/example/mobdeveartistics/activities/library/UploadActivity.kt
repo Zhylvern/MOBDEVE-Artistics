@@ -1,5 +1,7 @@
 package com.example.mobdeveartistics.activities.library
 
+import UploadFormActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -36,8 +38,10 @@ class UploadActivity : AppCompatActivity() {
         rvUploads.layoutManager = LinearLayoutManager(this)
     }
 
-    fun uploadSong(v: View) {
-        Toast.makeText(this, "TODO: Upload a Song", Toast.LENGTH_SHORT).show();
+    fun uploadSong(v: View?) {
+        val i = Intent(applicationContext, UploadFormActivity::class.java)
+        startActivity(i)
+//        Toast.makeText(this, "TODO: Upload a Song", Toast.LENGTH_SHORT).show();
     }
 
     fun backToLibrary(v: View) {
