@@ -5,12 +5,14 @@ import com.example.mobdeveartistics.network.login.LoginRequest
 import com.example.mobdeveartistics.network.login.LoginResponse
 import com.example.mobdeveartistics.network.register.RegisterRequest
 import com.example.mobdeveartistics.network.register.RegisterResponse
-import com.example.mobdeveartistics.network.user_profile.UserProfileRequest
+import com.example.mobdeveartistics.network.update_profile.UserUpdateRequest
+import com.example.mobdeveartistics.network.update_profile.UserUpdateResponse
 import com.example.mobdeveartistics.network.user_profile.UserProfileResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface ApiService {
@@ -25,4 +27,7 @@ interface ApiService {
 
     @GET("profiles/user")
     fun getUserProfile(@Query("userId") userId: String): Call<List<UserProfileResponse>>
+
+    @PUT("profiles/user/update")
+    fun postUserProfile(@Body userUpdateRequest: UserUpdateRequest): Call<UserUpdateResponse>
 }

@@ -20,7 +20,6 @@ import com.example.mobdeveartistics.adapters.FeedAdapter
 import com.example.mobdeveartistics.network.ApiService
 import com.example.mobdeveartistics.network.RetrofitApiService
 import com.example.mobdeveartistics.network.feed.Post
-import com.example.mobdeveartistics.network.user_profile.UserProfileRequest
 import com.example.mobdeveartistics.network.user_profile.UserProfileResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -135,6 +134,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val i = Intent(applicationContext, EditProfileActivity::class.java)
         i.putExtra("profile", profile)
+        i.putExtra("userID", userID_value)
         startActivityForResult(i, 1) // Start the activity for result
     }
 
