@@ -3,11 +3,15 @@ package com.example.mobdeveartistics.activities.library
 import Post
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +32,8 @@ class UploadFormActivity : AppCompatActivity() {
     private lateinit var uploadJacketButton: Button
     private lateinit var submitButton: Button
     private lateinit var captionEditText: EditText
+    private lateinit var songNameTextView: TextView
+    private lateinit var jacketImageView: ImageView
 
     private var songUri: Uri? = null
     private var jacketUri: Uri? = null
@@ -42,6 +48,8 @@ class UploadFormActivity : AppCompatActivity() {
         uploadJacketButton = findViewById(R.id.uploadJacketButton)
         submitButton = findViewById(R.id.submitButton)
         captionEditText = findViewById(R.id.captionEditText)
+        songNameTextView = findViewById(R.id.songNameTextView)
+        jacketImageView = findViewById(R.id.jacketImageView)
 
         // Set onClickListeners for upload buttons
         uploadSongButton.setOnClickListener {
@@ -71,9 +79,27 @@ class UploadFormActivity : AppCompatActivity() {
             when (requestCode) {
                 REQUEST_CODE_SONG -> {
                     songUri = data.data // Get the selected song URI
+                    songUri?.let {
+                        // Display the name of the uploaded song
+                        val cursor = contentResolver.query(it, null, null, null, null)
+                        cursor?.use {
+                            val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                            if (it.moveToFirst()) {
+                                val songName = it.getString(nameIndex)
+                                songNameTextView.text = songName
+                            }
+                        }
+                    }
                 }
                 REQUEST_CODE_JACKET -> {
                     jacketUri = data.data // Get the selected jacket URI
+                    jacketUri?.let {
+                        // Display the image preview
+                        val inputStream = contentResolver.openInputStream(it)
+                        val bitmap = BitmapFactory.decodeStream(inputStream)
+                        jacketImageView.setImageBitmap(bitmap)
+                        jacketImageView.visibility = View.VISIBLE // Make the ImageView visible
+                    }
                 }
             }
         }
