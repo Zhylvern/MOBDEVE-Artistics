@@ -16,4 +16,5 @@ class RetrofitApiService {
     public fun getRetrofitInstance(): Retrofit {
         return retrofit
     }
+
 }

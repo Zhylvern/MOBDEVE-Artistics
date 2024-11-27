@@ -30,10 +30,16 @@ class MainActivity : AppCompatActivity() {
     private var accessToken_value: String? = null
     private var userID_value: String? = null
 
+    override fun onResume() {
+        super.onResume()
+        fetchPosts() // Refresh the posts when returning to MainActivity
+    }
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.feed_activity_main)
 
         // Retrieve the intent and its extras
@@ -65,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         if (accessToken_value == null || userID_value == null) {
             // Hide the buttons if either is null
             homeButton.visibility = View.GONE
-            libraryButton.visibility = View.VISIBLE
+            libraryButton.visibility = View.GONE
             profileButton.visibility = View.GONE
             navLoginButton.visibility = View.VISIBLE
             navLogoutButton.visibility = View.GONE
