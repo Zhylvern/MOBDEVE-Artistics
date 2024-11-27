@@ -14,5 +14,4 @@ data class Post (
     @SerialName(value = "imgUrl")
     val img_url: String,
     val song_url: String
-
 )

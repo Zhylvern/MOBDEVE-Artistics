@@ -20,12 +20,16 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.mobdeveartistics.R
 import com.example.mobdeveartistics.network.ApiService
 import com.example.mobdeveartistics.network.RetrofitApiService
+import com.example.mobdeveartistics.network.feed.UserUploadPostRequest
+import com.example.mobdeveartistics.network.feed.UserUploadPostResponse
 import okhttp3.Call
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.Response
 import java.io.File
+import retrofit2.Callback
+
 
 class UploadFormActivity : AppCompatActivity() {
     private lateinit var uploadSongButton: Button
@@ -105,44 +109,44 @@ class UploadFormActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadContent() {
+    fun uploadContent() {
+        // Create a request body for the files and caption
+//        val requestFileSong = songUri?.let {
+//            RequestBody.create(MediaType.parse("audio/mpeg"), File(it.path))
+//        }
+//        val requestFileImage = jacketUri?.let {
+//            RequestBody.create(MediaType.parse("image/jpeg"), File(it.path))
+//        }
+//
+//        // Create MultipartBody.Part for the files
+//        val multipartSong = requestFileSong?.let {
+//            MultipartBody.Part.createFormData("song", "song.mp3", it)
+//        }
+//        val multipartImage = requestFileImage?.let {
+//            MultipartBody.Part.createFormData("image", "jacket.jpg", it)
+//        }
+
+        val id = ""
         val caption = captionEditText.text.toString()
 
-        // Create a Retrofit instance
-        val retrofit = RetrofitApiService().getRetrofitInstance()
-        val apiService = retrofit.create(ApiService::class.java)
+        val uploadRequest = UserUploadPostRequest(id, caption)
 
-        // Create a request body for the files and caption
-        val requestFileSong = songUri?.let {
-            RequestBody.create(MediaType.parse("audio/mpeg"), File(it.path))
-        }
-        val requestFileImage = jacketUri?.let {
-            RequestBody.create(MediaType.parse("image/jpeg"), File(it.path))
-        }
+        // Make the API call to upload the content
+        RetrofitApiService().getRetrofitInstance().create(ApiService::class.java)
+            .uploadPost(uploadRequest).enqueue(object : Callback<UserUploadPostResponse>{
+            override fun onResponse(call: retrofit2.Call<UserUploadPostResponse>, response: retrofit2.Response<UserUploadPostResponse>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@UploadFormActivity, "Upload successful!", Toast.LENGTH_SHORT).show()
+                    finish() // Close the activity and return to MainActivity
+                } else {
+                    Toast.makeText(this@UploadFormActivity, "Upload failed", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-        // Create MultipartBody.Part for the files
-        val multipartSong = requestFileSong?.let {
-            MultipartBody.Part.createFormData("song", "song.mp3", it)
-        }
-        val multipartImage = requestFileImage?.let {
-            MultipartBody.Part.createFormData("image", "jacket.jpg", it)
-        }
-//
-//        // Make the API call to upload the content
-//        apiService.uploadPost(multipartImage, multipartSong, RequestBody.create(MediaType.parse("text/plain"), caption)).enqueue(object : Callback<Post> {
-//            override fun onResponse(call: Call<Post>, response: Response<Post>) {
-//                if (response.isSuccessful) {
-//                    Toast.makeText(this@UploadFormActivity, "Upload successful!", Toast.LENGTH_SHORT).show()
-//                    finish() // Close the activity and return to MainActivity
-//                } else {
-//                    Toast.makeText(this@UploadFormActivity, "Upload failed: ${response.message()}", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Post>, t: Throwable) {
-//                Toast.makeText(this@UploadFormActivity, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
-//            }
-//        })
+            override fun onFailure(call: retrofit2.Call<UserUploadPostResponse>, t: Throwable) {
+                Toast.makeText(this@UploadFormActivity, "Network error", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     companion object {

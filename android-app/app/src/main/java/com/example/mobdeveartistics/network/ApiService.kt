@@ -1,6 +1,8 @@
 package com.example.mobdeveartistics.network
 
 import com.example.mobdeveartistics.network.feed.Post
+import com.example.mobdeveartistics.network.feed.UserUploadPostRequest
+import com.example.mobdeveartistics.network.feed.UserUploadPostResponse
 import com.example.mobdeveartistics.network.login.LoginRequest
 import com.example.mobdeveartistics.network.login.LoginResponse
 import com.example.mobdeveartistics.network.register.RegisterRequest
@@ -35,11 +37,6 @@ interface ApiService {
     @PUT("profiles/user/update")
     fun postUserProfile(@Body userUpdateRequest: UserUpdateRequest): Call<UserUpdateResponse>
 
-    @Multipart
     @POST("posts")
-    fun uploadPost(
-        @Part image: MultipartBody.Part?,
-        @Part song: MultipartBody.Part?,
-        @Part("caption") caption: RequestBody
-    ): Call<Post>
+    fun uploadPost(@Body userUploadPostRequest: UserUploadPostRequest): Call<UserUploadPostResponse>
 }
