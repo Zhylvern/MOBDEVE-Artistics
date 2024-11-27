@@ -111,20 +111,20 @@ class UploadFormActivity : AppCompatActivity() {
 
     fun uploadContent() {
         // Create a request body for the files and caption
-//        val requestFileSong = songUri?.let {
-//            RequestBody.create(MediaType.parse("audio/mpeg"), File(it.path))
-//        }
-//        val requestFileImage = jacketUri?.let {
-//            RequestBody.create(MediaType.parse("image/jpeg"), File(it.path))
-//        }
-//
-//        // Create MultipartBody.Part for the files
-//        val multipartSong = requestFileSong?.let {
-//            MultipartBody.Part.createFormData("song", "song.mp3", it)
-//        }
-//        val multipartImage = requestFileImage?.let {
-//            MultipartBody.Part.createFormData("image", "jacket.jpg", it)
-//        }
+        val requestFileSong = songUri?.let {
+            RequestBody.create(MediaType.parse("audio/mpeg"), File(it.path))
+        }
+        val requestFileImage = jacketUri?.let {
+            RequestBody.create(MediaType.parse("image/jpeg"), File(it.path))
+        }
+
+        // Create MultipartBody.Part for the files
+        val multipartSong = requestFileSong?.let {
+            MultipartBody.Part.createFormData("song", "song.mp3", it)
+        }
+        val multipartImage = requestFileImage?.let {
+            MultipartBody.Part.createFormData("image", "jacket.jpg", it)
+        }
 
         val id = ""
         val caption = captionEditText.text.toString()
