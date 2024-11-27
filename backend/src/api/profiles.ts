@@ -20,22 +20,35 @@ router.get('/users', async (res: any) => {
 
 // User Profile
 router.get('/user', async (req: any, res: any) => {
-  const { id } = req.body;
+  const { userId } = req.query;
+
+  // Log incoming request details
+  console.log('Incoming request to /user endpoint');
+  console.log('Query parameters:', req.query);
 
   // Check if user id exists
-  if (!id) {
+  if (!userId) {
+    console.error('No user id provided');
     return res.status(400).json({ error: 'No user id' });
   }
+
+  console.log('User  ID received:', userId);
 
   const { data, error } = await supabase
     .from('profiles')
     .select('*')
-    .eq("user_id", id)
+    .eq("user_id", userId);
+
+  // Log the result of the database query
   if (error) {
+    console.error('Database error:', error.message);
     return res.status(500).json({ error: error.message });
   }
+
+  console.log('Data retrieved from database:', data);
+
   res.status(200).json(data);
-})
+});
 
 // User Profile Update
 router.put('/user/update', async (req: any, res: any) => {
