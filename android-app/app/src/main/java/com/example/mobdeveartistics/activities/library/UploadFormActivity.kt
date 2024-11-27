@@ -24,10 +24,10 @@ class UploadFormActivity : AppCompatActivity() {
             insets
         }
 
-//        // Set up the submit button
-//        val submitButton: Button = findViewById(R.id.submitButton)
-//        submitButton.setOnClickListener {
-//            finish()
-//        }
+        // Set up the submit button
+        val submitButton: Button = findViewById(R.id.submitButton)
+        submitButton.setOnClickListener {
+            finish()
+        }
     }
 }

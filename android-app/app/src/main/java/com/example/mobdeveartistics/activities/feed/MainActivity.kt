@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         if (accessToken_value == null || userID_value == null) {
             // Hide the buttons if either is null
             homeButton.visibility = View.GONE
-            libraryButton.visibility = View.GONE
+            libraryButton.visibility = View.VISIBLE
             profileButton.visibility = View.GONE
             navLoginButton.visibility = View.VISIBLE
             navLogoutButton.visibility = View.GONE
